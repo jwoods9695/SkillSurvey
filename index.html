@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://kit.fontawesome.com/515deb5b82.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="circle_favi.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>SkillSurvey | Assessment Test</title>
+</head>
+<body>
+
+    <i class="fa-solid fa-circle-user guest-icon"></i>
+    <div class="cable-container">
+        <img src="wires_bg.png" class="wires-mobile" />
+        <img src="wires_pcbg.png" class="wires-pc" />
+    </div>
+
+    <div class="load-container">
+        <div class="loader">
+            <div class="load-dot"></div>
+            <div class="load-dot"></div>
+            <div class="load-dot"></div>
+            <div class="load-dot"></div>
+        </div>
+    </div>
+
+    <div class="logs-wrapper shown">
+        <img src="survey_logo.png" class="circle-logo"/>
+
+        <div class="logs-txt">Create an Account</div>
+        <div class="change-logs"><div id="changeTxt">Already have an account?</div> <div id="changeLink" onclick="changeLogs()">Log in</div></div>
+
+        <div class="input-wrapper">
+            <div class="already-logged">You're already a member, Please Login.</div>
+
+            <i class="fa-solid fa-user input-icons"></i>
+            <input type="text" placeholder="Username" class="logs-inputs">
+        </div>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icons"></i>
+            <input type="password" placeholder="Password" class="logs-inputs">
+            <div class="blocker"></div>
+            <div class="invalid-creds">Please enter valid credentials</div>
+        </div>
+        <div class="input-wrapper" id="pinInput" style="display: none;">
+            <i class="fa-solid fa-key input-icons"></i>
+            <input type="text" placeholder="Custom Pin" class="logs-inputs">
+
+            <div class="invalid-creds">Please enter valid credentials</div>
+        </div>
+
+        <button class="enter-btn" onclick="enterDatabase()">Sign Up</button>
+        <div class="or-flx">
+            <div class="or-line"></div>
+            <div class="or-txt">OR</div>
+            <div class="or-line"></div>
+        </div>
+
+        <div class="skip-txt" onclick="skipLogs()">Continue as guest</div>
+    </div>
+
+    <div class="catg-wrapper waiting di-n">
+        <i class="fa-solid fa-right-from-bracket exit-icon"></i>
+        <div class="catg-title">Choose Category</div>
+
+        <div class="list-wrapper">
+            <div class="catg-card reg-card">
+                <div class="error-msg">Create an account to continue</div>
+                <i class="fa-solid fa-video catg-icons"></i>
+
+                <div class="card-desc">
+                    <div class="card-label">Video Editing</div>
+                    <div class="card-time"><i class="fa-regular fa-clock catg-clock"></i> 10m</div>
+                </div>
+
+                <div class="catg-btn"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="catg-card reg-card">
+                <div class="error-msg">Create an account to continue</div>
+                <i class="fa-solid fa-palette catg-icons"></i>
+                
+                <div class="card-desc">
+                    <div class="card-label">Graphic Design</div>
+                    <div class="card-time"><i class="fa-regular fa-clock catg-clock"></i> 10m</div>
+                </div>
+
+                <div class="catg-btn"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="catg-card reg-card">
+                <div class="error-msg">Create an account to continue</div>
+                <i class="fa-solid fa-code catg-icons"></i>
+                
+                <div class="card-desc">
+                    <div class="card-label">Web Development</div>
+                    <div class="card-time"><i class="fa-regular fa-clock catg-clock"></i> 15m</div>
+                </div>
+
+                <div class="catg-btn"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="catg-card reg-card">
+                <div class="error-msg">Create an account to continue</div>
+                <i class="fa-solid fa-chart-simple catg-icons"></i>
+                
+                <div class="card-desc">
+                    <div class="card-label">Marketing</div>
+                    <div class="card-time"><i class="fa-regular fa-clock catg-clock"></i> 6m</div>
+                </div>
+
+                <div class="catg-btn"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quiz-wrapper waiting di-n">
+        <div class="quiz-nav">
+            <div class="prev-btn" onclick="prevQuestion()"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="quiz-num"><span id="quizQues">1</span><span id="amount">/10</span></div>
+            <div class="quiz-skip" onclick="skipQuestion()">Skip</div>
+        </div>
+        <div class="prog-wrapper">
+            <div class="prog-fill"></div>
+        </div>
+
+        <div class="choice-wrapper">
+            <div class="quiz-txt" id="quizTitle">Who is the funder of Apple Iphone?</div>
+
+            <div class="ques-wrapper">
+                <div class="ques-txt">(A) Science</div>
+                <div class="ques-btn"><i class="fa-solid fa-check check-icon"></i></div>
+            </div>
+            <div class="ques-wrapper">
+                <div class="ques-txt">(B) Science</div>
+                <div class="ques-btn"><i class="fa-solid fa-check check-icon"></i></div>
+            </div>
+            <div class="ques-wrapper">
+                <div class="ques-txt">(C) Science</div>
+                <div class="ques-btn"><i class="fa-solid fa-check check-icon"></i></div>
+            </div>
+            <div class="ques-wrapper">
+                <div class="ques-txt">(D) Science</div>
+                <div class="ques-btn"><i class="fa-solid fa-check check-icon"></i></div>
+            </div>
+
+            <div class="next-container">
+                <button class="next-btn" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-wrapper waiting di-n">
+        <img src="survey_logo.png" class="circle-logo"/>
+        <div class="pay-title">View Your Results</div>
+        <div class="pay-para">Enter your unique code below to see your results</div>
+
+        <div class="code-error">Invalid code, please try again</div>
+        <div class="code-flex">
+            <div class="code-bg">
+                <input type="text" class="code-input">
+            </div>
+            <div class="code-bg">
+                <input type="text" class="code-input">
+            </div>
+            <div class="code-bg">
+                <input type="text" class="code-input">
+            </div>
+            <div class="code-bg">
+                <input type="text" class="code-input">
+            </div>
+        </div>
+        <button class="pay-btn" onclick="seeResults()">See Results</button>
+    </div>
+
+    <div class="results-wrapper waiting di-n">
+        <i class="fa-solid fa-right-from-bracket exit-icon"></i>
+        <div class="result-title">Results</div>
+        <div class="score-txt"><span class="score-txt" id="scoreTxt">0</span>%</div>
+        <div class="result-bar"><div class="result-fill"></div></div>
+
+        <div class="stats-wrapper">
+            <i class="fa-regular fa-circle-up res-arrows arr-up dis-arr" onclick="pageUp()"></i>
+        <div class="stat-container stat-active">
+            <div class="stat-box">
+                <div class="stat-label">1</div> <!--  <i class="fa-solid fa-check res-check"></i>  -->
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">2</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">3</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+        </div>
+        <div class="stat-container stat-inactive-bottom">
+            <div class="stat-box">
+                <div class="stat-label">4</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">5</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">6</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+        </div>
+        <div class="stat-container stat-inactive-bottom">
+            <div class="stat-box">
+                <div class="stat-label">7</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">8</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">9</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+        </div>
+        <div class="stat-container stat-inactive-bottom">
+            <div class="stat-box">
+                <div class="stat-label">10</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">11</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">12</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+        </div>
+        <div class="stat-container stat-inactive-bottom">
+            <div class="stat-box">
+                <div class="stat-label">13</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">14</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">15</div>
+
+                <div class="indexs-flex">
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                    <div class="index-wrapper"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+
+                <div class="time-stats">
+                    <i class="fa-regular fa-clock"></i>
+
+                    <div class="ttaken-txt">30s</div>
+                </div>
+            </div>
+        </div>
+            <i class="fa-regular fa-circle-down res-arrows arr-down act-arr" onclick="pageDown()"></i>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
